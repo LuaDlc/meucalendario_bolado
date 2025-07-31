@@ -36,10 +36,24 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   Future<void> _onUpdateEvent(
     UpdateEvent event,
     Emitter<EventState> emit,
-  ) async {}
+  ) async {
+    try {
+      await eventRepository.updateEvent(event.event);
+      add(LoadEvents(date: event.event.date));
+    } catch (e) {
+      emit(EventError(e.toString()));
+    }
+  }
 
   Future<void> _onDeleteEvent(
     DeleteEvent event,
     Emitter<EventState> emit,
-  ) async {}
+  ) async {
+    try {
+      await eventRepository.deleteEvent(event.eventId);
+      add(LoadEvents());
+    } catch (e) {
+      emit(EventError(e.toString()));
+    }
+  }
 }
