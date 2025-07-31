@@ -14,7 +14,7 @@ class EventBloc extends Bloc<EventEvent, EventState> {
   }
 
   Future<void> _onLoadEvents(LoadEvents event, Emitter<EventState> emit) async {
-    emit(EventLoading());
+    emit(EventLoaded());
     try {
       final events = await eventRepository.getEvents(date: event.date);
       emit(EventLoaded(events: events));
@@ -23,11 +23,14 @@ class EventBloc extends Bloc<EventEvent, EventState> {
     }
   }
 
-  Future<void> _onAddEvent(AddEvent event, Emitter<EventState> emit) async {
+  Future<void> _onAddEvent(event, emit) async {
     try {
       await eventRepository.addEvent(event.event);
+      emit(EventLoading());
       //apos adicionar recarrega os eventos para atualizar a ui
-      add(LoadEvents(date: event.event.date));
+      final events = await eventRepository.getEvents(date: event.event.date);
+      emit(EventLoaded(events: events));
+      // add(LoadEvents(date: event.event.date));
     } catch (e) {
       emit(EventError(e.toString()));
     }
