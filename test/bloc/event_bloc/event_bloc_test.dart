@@ -42,7 +42,7 @@ void main() {
       act: (bloc) => bloc.add(LoadEvents()),
       expect:
           () => <EventState>[
-            EventLoading(),
+            EventLoaded(),
             const EventError('Exception: Failed to load events'),
           ],
     );

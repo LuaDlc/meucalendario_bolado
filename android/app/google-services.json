@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "174610478186",
+    "project_id": "meucalendariobolado-9eb89",
+    "storage_bucket": "meucalendariobolado-9eb89.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174610478186:android:62ba628bc17fa36d40c613",
+        "android_client_info": {
+          "package_name": "com.example.meucalendario_bolado"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl7OYRfj_2tOiTt7oub8_GoWobMzk1hBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
